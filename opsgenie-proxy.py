@@ -23,7 +23,7 @@ def healthz():
 
 @app.route('/proxy', methods=['POST'])
 def proxy():
-    headers = {'Authorization': app.config['API_KEY']}
+    headers = {'Authorization': 'GenieKey '+app.config['API_KEY']}
     app.logger.debug('Sending GET request to OpsGenie API')
     r = requests.post(
         'https://api.opsgenie.com/v2/heartbeats/{}/ping'.format(app.config['HEARTBEAT_NAME']), 
