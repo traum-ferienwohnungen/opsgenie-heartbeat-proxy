@@ -1,5 +1,7 @@
 # opsgenie-heartbeat-proxy
 
+[![Docker Build Status](https://img.shields.io/docker/build/traumfewo/opsgenie-heartbeat-proxy.svg)](https://hub.docker.com/r/traumfewo/opsgenie-heartbeat-proxy/)
+
 ## Description
 Proxy Prometheus Alertmanager webhooks to OpsGenie Heartbeat API to work around issue discussed here 
 <https://github.com/prometheus/alertmanager/pull/444>
