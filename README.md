@@ -1,7 +1,7 @@
 # opsgenie-heartbeat-proxy
 
 ## Description
-Proxy Prometheus Alertmanager webhooks to OpsGenie Heartbeat API to work around issue discuessed here 
+Proxy Prometheus Alertmanager webhooks to OpsGenie Heartbeat API to work around issue discussed here 
 <https://github.com/prometheus/alertmanager/pull/444>
 
 ## Usage
