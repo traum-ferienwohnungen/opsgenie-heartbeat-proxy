@@ -1,0 +1,48 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: heartbeat-proxy
+  name: heartbeat-proxy
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: heartbeat-proxy
+  type: "ClusterIP"
+#  type: "LoadBalancer"
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: heartbeat-proxy
+  name: heartbeat-proxy
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: heartbeat-proxy
+    spec:
+      containers:
+        - name: heartbeat-proxy
+          image: traumfewo/opsgenie-heartbeat-proxy:v0.0.3
+          env:
+          - name: OPSGENIE_API_KEY
+            value: "youropsgenieapikey"
+          - name: HEARTBEAT_NAME
+            value: "yourheartbeatname"
+          ports:
+          - containerPort: 8080
+          resources:
+            limits:
+              cpu: 1
+              memory: 1Gi
+            requests:
+              cpu: 500m
+              memory: 512Mi
