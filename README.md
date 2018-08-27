@@ -43,3 +43,8 @@ Alertmanager receiver:
   - send_resolved: false
     url: http://<container-ip>:8080/proxy
 ```
+
+## Kubernetes Deployment
+
+If you want to use opsgenie heartbeat proxy for a prometheus setup on kubernetes you can use the yaml file from examples to deploy the proxy to your running kubernetes cluster.
+If you run prometheus inside your kubernetes cluster the service type "ClusterIP" should be sufficient. Otherwise, you can change the kubernetes service type to  "LoadBalancer" to request a public routable ip.
