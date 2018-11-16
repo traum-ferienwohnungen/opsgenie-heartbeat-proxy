@@ -2,6 +2,24 @@
 
 [![Docker Build Status](https://img.shields.io/docker/build/traumfewo/opsgenie-heartbeat-proxy.svg)](https://hub.docker.com/r/traumfewo/opsgenie-heartbeat-proxy/)
 
+## You can use OpsGenie Heartbeats Version 2 now
+
+With the advent of version 2 of OpsGenie Heartbeats, this proxy is obsolete.
+If you want to send heartbeats without using this proxy, you need to migrate
+existing v1 hearbeat to v2 which is quite easy.  See instructions in the
+Hearbeat settings page.
+
+Use a receiver definition like this (inspired by [this comment](https://github.com/prometheus/alertmanager/pull/444#issuecomment-428493861)):
+```
+- name: opsgenie
+  webhook_configs:
+  - url: 'https://api.opsgenie.com/v2/heartbeats/<the-heartbeat-name>/ping'
+    send_resolved: false
+    http_config:
+      basic_auth:
+        password: 123e4567-e89b-12d3-a456-426655440000
+```
+
 ## Description
 Proxy Prometheus Alertmanager webhooks to OpsGenie Heartbeat API to work around issue discussed here 
 <https://github.com/prometheus/alertmanager/pull/444>
